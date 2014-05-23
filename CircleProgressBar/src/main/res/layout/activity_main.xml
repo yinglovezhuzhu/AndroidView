@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circleprogress="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context="${packageName}.${activityClass}">
+
+    <com.opensource.widget.CircleProgressBar
+        android:id="@+id/cpb_progress"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        circleprogress:backgroundColor="#00FFFFFF"
+        circleprogress:progressBackgroundColor="#FFAABBCC"
+        circleprogress:centerBackgroundColor="#00FF0000"
+        circleprogress:max="100"
+        circleprogress:progress="50"
+        circleprogress:showNumber="true"
+        circleprogress:progressWidth="10dip"/>
+</RelativeLayout>
