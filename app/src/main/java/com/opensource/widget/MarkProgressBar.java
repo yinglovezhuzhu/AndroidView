@@ -58,7 +58,7 @@ public class MarkProgressBar extends View {
     private RectF mRectF;
     private Paint mPaint;
 
-    private Stack<Integer> mSplites = new Stack<Integer>();
+    private Stack<Integer> mSplits = new Stack<Integer>();
 
     private long mUiThreadId;
 
@@ -240,10 +240,10 @@ public class MarkProgressBar extends View {
      * @param progress
      */
     public void pushSplit(int progress) {
-        if(progress == 0 || mSplites.contains(progress)) {
+        if(progress == 0 || mSplits.contains(progress)) {
             return;
         }
-        mSplites.push(progress);
+        mSplits.push(progress);
         refreshProgress();
     }
 
@@ -252,10 +252,10 @@ public class MarkProgressBar extends View {
      * @return the las split position.
      */
     public int popSplit() {
-        if(mSplites.empty()) {
+        if(mSplits.empty()) {
             return 0;
         }
-        Integer split = mSplites.pop();
+        Integer split = mSplits.pop();
         refreshProgress();
         return split == null ? 0 : split;
     }
@@ -265,10 +265,10 @@ public class MarkProgressBar extends View {
      * @return the last split position
      */
     public int peekSplit() {
-        if(mSplites.empty()) {
+        if(mSplits.empty()) {
             return 0;
         }
-        Integer split = mSplites.peek();
+        Integer split = mSplits.peek();
         return split == null ? 0 : split;
     }
 
@@ -276,8 +276,18 @@ public class MarkProgressBar extends View {
      * Empty split positions
      */
     public void clearSplits() {
-        mSplites.clear();
+        mSplits.clear();
         refreshProgress();
+    }
+
+    /**
+     * Exit confirm state
+     */
+    public void clearConfirm() {
+        if(mConfirming) {
+            mLastSplitPosition = INVALID_POSITION;
+            mConfirming = false;
+        }
     }
 
     /**
@@ -394,7 +404,7 @@ public class MarkProgressBar extends View {
     private void drawSplits(Canvas canvas) {
         int width = getWidth();
         mPaint.setColor(mSplitColor);
-        for(Integer split : mSplites) {
+        for(Integer split : mSplits) {
             mRectF.top = getTop();
             mRectF.bottom = getBottom();
             if(split < mSplitWidth) {

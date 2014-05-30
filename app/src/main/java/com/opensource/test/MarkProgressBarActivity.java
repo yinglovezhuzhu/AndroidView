@@ -74,6 +74,7 @@ public class MarkProgressBarActivity extends ActionBarActivity implements View.O
         switch (v.getId()) {
             case R.id.btn_start:
                 if(mPausing) {
+                    mMpb.clearConfirm();
                     mHandler.sendEmptyMessageDelayed(MSG_UPDATE_PROGRESS, 20);
                     mPausing = false;
                 }
