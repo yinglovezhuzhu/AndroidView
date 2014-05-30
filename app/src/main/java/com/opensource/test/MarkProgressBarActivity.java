@@ -131,6 +131,7 @@ public class MarkProgressBarActivity extends ActionBarActivity implements View.O
                         mMpb.setProgress(mMpb.getMaxProgress());
                         mPausing = true;
                         mBtnBack.setEnabled(mPausing);
+                        mBtnReset.setEnabled(mPausing);
                     }
                     break;
                 default:
