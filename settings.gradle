@@ -1,1 +1,1 @@
-include ':CircleProgressBar'
+include 'app'

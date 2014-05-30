@@ -165,6 +165,14 @@ public class CircleProgressBar extends View {
 			refreshProgress();
 		}
 	}
+
+    /**
+     * Get current progress
+     * @return
+     */
+    public synchronized int getProgress() {
+        return mProgress;
+    }
  
 	/**
 	 * 
