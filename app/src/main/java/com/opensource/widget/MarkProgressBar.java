@@ -297,6 +297,9 @@ public class MarkProgressBar extends View {
     public void deleteBack(boolean isConfirm) {
         if(isConfirm) {
             if(mConfirming) {
+                if(mProgress < mMaxProgress) {
+                    popSplit();
+                }
                 if(mDeleteListener != null) {
                     mDeleteListener.onDelete(mLastSplitPosition, mProgress);
                 }
@@ -304,10 +307,14 @@ public class MarkProgressBar extends View {
                 mLastSplitPosition = INVALID_POSITION;
                 mConfirming = false;
             } else {
+                int latest = INVALID_POSITION;
                 if(mProgress < mMaxProgress) {
-                    popSplit();
+                    latest = popSplit();
                 }
                 mLastSplitPosition = peekSplit();
+                if(latest != INVALID_POSITION) {
+                    mSplits.push(latest);
+                }
                 if(mDeleteListener != null) {
                     mDeleteListener.onConfirm(mLastSplitPosition, mProgress);
                 }
