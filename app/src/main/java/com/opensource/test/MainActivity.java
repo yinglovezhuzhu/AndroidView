@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
                         intent.setClass(MainActivity.this, CircleProgressBarActivity.class);
                         break;
                     case 1:
-//                        intent.setClass(MainActivity.this, Mar)
+                        intent.setClass(MainActivity.this, MarkProgressBarActivity.class);
                         break;
                     default:
                         break;

@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.opensource.test.CircleProgressBarActivity"/>
+        <activity android:name="com.opensource.test.CircleProgressBarActivity" />
+        <activity
+            android:name="com.opensource.test.MarkProgressBarActivity"
+            android:label="@string/title_activity_mark_progress_bar" >
+        </activity>
     </application>
 
 </manifest>

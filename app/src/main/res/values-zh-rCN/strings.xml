@@ -18,8 +18,14 @@
   -->
 
 <resources>
-    <array name="items">
-        <item>CircleProgressBar</item>
-        <item>MarkProgressBar</item>
-    </array>
+
+    <string name="app_name">CircleProgressBar</string>
+    <string name="title_activity_mark_progress_bar">MarkProgressBarActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="start">开始</string>
+    <string name="pause">暂停</string>
+    <string name="back">回删</string>
+    <string name="reset">重置</string>
+
 </resources>

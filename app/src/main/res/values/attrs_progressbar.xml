@@ -18,8 +18,18 @@
   -->
 
 <resources>
-    <array name="items">
-        <item>CircleProgressBar</item>
-        <item>MarkProgressBar</item>
-    </array>
+    <declare-styleable name="DrawProgressBar">
+        <attr name="backgroundColor" format="color" />
+        <attr name="progressColor" format="color" />
+        <attr name="progressBackgroundColor" format="color"/>
+        <attr name="progressWidth" format="dimension" />
+        <attr name="centerBackgroundColor" format="color" />
+        <attr name="splitColor" format="color" />
+        <attr name="splitWidth" format="dimension" />
+        <attr name="showNumber" format="boolean" />
+        <attr name="max" format="integer"/>
+        <attr name="progress" format="integer"/>
+        <attr name="minMask" format="integer" />
+        <attr name="minMaskColor" format="color" />
+    </declare-styleable>
 </resources>

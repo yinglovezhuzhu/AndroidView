@@ -90,16 +90,16 @@ public class CircleProgressBar extends View {
 		super(context, attrs, defStyle);
 		mUiThreadId = Thread.currentThread().getId();
 		initProgressBar();
-		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleProgressBar);
-//		
-		setBackgroundColor(a.getColor(R.styleable.CircleProgressBar_backgroundColor, mBackgroundColor));
-		setProgressBackgroundColor(a.getColor(R.styleable.CircleProgressBar_progressBackgroundColor, mProgressBackgroundColor));
-		setProgressColor(a.getColor(R.styleable.CircleProgressBar_progressColor, mProgressColor));
-		setCenterBackgroundColor(a.getColor(R.styleable.CircleProgressBar_centerBackgroundColor, mCenterBackgroundColor));
-		setProgressWidth(a.getDimensionPixelSize(R.styleable.CircleProgressBar_progressWidth, 0));
-		mShowNumber = a.getBoolean(R.styleable.CircleProgressBar_showNumber, false);
-		setMaxProgress(a.getInt(R.styleable.CircleProgressBar_max, mMaxProgress));
-		setProgress(a.getInt(R.styleable.CircleProgressBar_progress, mProgress));
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DrawProgressBar, defStyle, 0);
+
+		setBackgroundColor(a.getColor(R.styleable.DrawProgressBar_backgroundColor, mBackgroundColor));
+		setProgressBackgroundColor(a.getColor(R.styleable.DrawProgressBar_progressBackgroundColor, mProgressBackgroundColor));
+		setProgressColor(a.getColor(R.styleable.DrawProgressBar_progressColor, mProgressColor));
+		setCenterBackgroundColor(a.getColor(R.styleable.DrawProgressBar_centerBackgroundColor, mCenterBackgroundColor));
+		setProgressWidth(a.getDimensionPixelSize(R.styleable.DrawProgressBar_progressWidth, 0));
+		mShowNumber = a.getBoolean(R.styleable.DrawProgressBar_showNumber, false);
+		setMaxProgress(a.getInt(R.styleable.DrawProgressBar_max, mMaxProgress));
+		setProgress(a.getInt(R.styleable.DrawProgressBar_progress, mProgress));
 		a.recycle();
 	}
  

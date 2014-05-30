@@ -33,7 +33,7 @@ import com.opensource.widget.R;
  */
 public class CircleProgressBarActivity extends Activity {
 
-    public static final int MSG_UPDAGE_PROGRESS = 0x100;
+    private static final int MSG_UPDAGE_PROGRESS = 0x100;
 
     private CircleProgressBar mCpb;
     private MainHandler mHandler;
@@ -76,7 +76,7 @@ public class CircleProgressBarActivity extends Activity {
         finish();
     }
 
-    class MainHandler extends Handler {
+    private class MainHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {

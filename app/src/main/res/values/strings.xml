@@ -2,5 +2,12 @@
 <resources>
 
     <string name="app_name">CircleProgressBar</string>
+    <string name="title_activity_mark_progress_bar">MarkProgressBarActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="back">Back</string>
+    <string name="reset">Rest</string>
 
 </resources>
