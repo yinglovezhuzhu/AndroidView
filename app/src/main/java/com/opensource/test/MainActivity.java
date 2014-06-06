@@ -51,6 +51,9 @@ public class MainActivity extends Activity {
                     case 1:
                         intent.setClass(MainActivity.this, MarkProgressBarActivity.class);
                         break;
+                    case 2:
+                        intent.setClass(MainActivity.this, DialogActivity.class);
+                        break;
                     default:
                         break;
                 }
