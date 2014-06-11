@@ -24,7 +24,7 @@
     android:padding="15dp"
     tools:context="${packageName}.${activityClass}">
 
-    <com.opensource.widget.CircleProgressBar
+    <com.opensource.view.CircleProgressBar
         android:id="@+id/cpb_progress"
         android:layout_width="100dp"
         android:layout_height="100dp"
