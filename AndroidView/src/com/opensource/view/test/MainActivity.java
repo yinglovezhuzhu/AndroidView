@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2014 The Android Open Source Project.
+/*******************************************************************************
+ * Copyright (C) ${year}.year The Android Open Source Project.
  *
  *        yinglovezhuzhu@gmail.com
  *
@@ -14,7 +14,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *******************************************************************************/
 
 package com.opensource.view.test;
 
@@ -50,9 +50,6 @@ public class MainActivity extends Activity {
                         break;
                     case 1:
                         intent.setClass(MainActivity.this, MarkProgressBarActivity.class);
-                        break;
-                    case 2:
-                        intent.setClass(MainActivity.this, DialogActivity.class);
                         break;
                     default:
                         break;

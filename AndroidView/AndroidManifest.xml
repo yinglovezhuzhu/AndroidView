@@ -44,10 +44,6 @@
             android:name=".test.MarkProgressBarActivity"
             android:label="@string/title_activity_mark_progress_bar" >
         </activity>
-        <activity
-            android:name=".test.DialogActivity"
-            android:label="@string/title_dialog_activity" >
-        </activity>
     </application>
 
 </manifest>

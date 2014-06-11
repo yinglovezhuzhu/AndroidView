@@ -21,6 +21,5 @@
     <array name="items">
         <item>CircleProgressBar</item>
         <item>MarkProgressBar</item>
-        <item>CustomDialogs</item>
     </array>
 </resources>
