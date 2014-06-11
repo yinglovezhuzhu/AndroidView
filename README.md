@@ -1,4 +1,0 @@
-AndroidView
-===========
-
-Android Custom widget
