@@ -1,0 +1,39 @@
+<!--
+  ~ Copyright (C) 2014 The Android Open Source Project.
+  ~
+  ~        yinglovezhuzhu@gmail.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circleprogress="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context="${packageName}.${activityClass}">
+
+    <com.opensource.widget.CircleProgressBar
+        android:id="@+id/cpb_progress"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        circleprogress:backgroundColor="#00FFFFFF"
+        circleprogress:progressBackgroundColor="#FFAABBCC"
+        circleprogress:centerBackgroundColor="#00FF0000"
+        circleprogress:max="100"
+        circleprogress:progress="50"
+        circleprogress:showNumber="true"
+        circleprogress:progressWidth="10dip"/>
+</RelativeLayout>
