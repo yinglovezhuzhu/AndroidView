@@ -18,22 +18,26 @@
 
 package com.opensource.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
-
 import java.util.Stack;
 
 /**
  * Use:
  * Created by yinglovezhuzhu@gmail.com on 2014-05-30.
  */
-public class MarkProgressBar extends View {
+public class ProgressView extends View {
+	
+	private static final int MSG_UPDATE_CURSOR = 0;
 
     private static final int MIN_SPLIT_WIDTH = 2;
     private static final int INVALID_POSITION = -1;
@@ -50,6 +54,12 @@ public class MarkProgressBar extends View {
     /** Mark color */
     private int mSplitColor = Color.RED;
     private int mMinMaskColor = Color.argb(0xff, 0x06, 0xD2, 0x85);
+    
+    private int mCursorHighColor = Color.argb(0xff, 0x00, 0xEE, 0xFF);
+    private int mCursorLowColor = Color.argb(0x00, 0xFF, 0xFF, 0xFF);
+    private int mCursorCurrentColor = mCursorLowColor;
+    private boolean mCursorHigh = true;
+    private long mCursorBlinkTime = 500L; //默认闪烁0.5秒
 
     private int mDeleteComfirmColor = Color.RED;
     private int mLastSplitPosition = INVALID_POSITION;
@@ -63,22 +73,44 @@ public class MarkProgressBar extends View {
     private long mUiThreadId;
 
     private boolean mConfirming = false;
+    
+    private boolean mShowCursor = true;
 
     private OnDeleteListener mDeleteListener;
+    
+    @SuppressLint("HandlerLeak")
+	private class MainHandler extends Handler {
+    	@Override
+    	public void handleMessage(Message msg) {
+    		switch (msg.what) {
+			case MSG_UPDATE_CURSOR:
+				mCursorCurrentColor = mCursorHigh ? mCursorLowColor : mCursorHighColor;
+				mCursorHigh = !mCursorHigh;
+				postInvalidate();
+				mHandler.sendEmptyMessageDelayed(MSG_UPDATE_CURSOR, mCursorBlinkTime);
+				break;
 
-    public MarkProgressBar(Context context) {
+			default:
+				break;
+			}
+    		super.handleMessage(msg);
+    	}
+    }
+    private MainHandler mHandler = new MainHandler();
+
+    public ProgressView(Context context) {
         this(context, null);
     }
 
-    public MarkProgressBar(Context context, AttributeSet attrs) {
+    public ProgressView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MarkProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
         this(context, attrs, defStyleAttr, 0);
     }
 
-    public MarkProgressBar(Context context,  AttributeSet attrs, int defStyleAttr, int styleRes) {
+    public ProgressView(Context context,  AttributeSet attrs, int defStyleAttr, int styleRes) {
         super(context, attrs, defStyleAttr);
         mUiThreadId = Thread.currentThread().getId();
         initProgressBar();
@@ -93,6 +125,7 @@ public class MarkProgressBar extends View {
         setMinMask(a.getInt(R.styleable.DrawProgressBar_minMask, 0));
         setMinMaskColor(a.getColor(R.styleable.DrawProgressBar_minMaskColor, mMinMaskColor));
         a.recycle();
+        mHandler.sendEmptyMessageDelayed(MSG_UPDATE_CURSOR, mCursorBlinkTime);
     }
 
     /**
@@ -360,6 +393,10 @@ public class MarkProgressBar extends View {
         drawProgress(canvas);
 
         drawSplits(canvas);
+        
+        if(mShowCursor) {
+        	drawCursor(canvas);
+        }
 
         super.onDraw(canvas);
     }
@@ -425,19 +462,28 @@ public class MarkProgressBar extends View {
         }
     }
 
+    private void drawCursor(Canvas canvas) {
+        int width = getWidth();
+        mPaint.setColor(mCursorCurrentColor);
+        mRectF.left = ((float)mProgress * width) / mMaxProgress;
+        mRectF.top = getTop();
+        mRectF.bottom = getBottom();
+        mRectF.right = mRectF.left + 15;
+        canvas.drawRect(mRectF, mPaint);
+    }
+
     private synchronized void refreshProgress() {
         if (mUiThreadId == Thread.currentThread().getId()) {
             this.postInvalidate();
         }
     }
-
-
+    
     /**
      * The listener to listen delete back<br/>
      * <p/>when sue {@link #deleteBack(boolean)} with value true, it would <br/>
-     * callback {@link com.opensource.widget.MarkProgressBar.OnDeleteListener#onConfirm(int, int)}<br/>
-     * and {@link com.opensource.widget.MarkProgressBar.OnDeleteListener#onDelete(int, int)}<br/>
-     * But only {@link com.opensource.widget.MarkProgressBar.OnDeleteListener#onDelete(int, int)} callback<br/>
+     * callback {@link com.opensource.ProgressView.MarkProgressBar.OnDeleteListener#onConfirm(int, int)}<br/>
+     * and {@link com.opensource.ProgressView.MarkProgressBar.OnDeleteListener#onDelete(int, int)}<br/>
+     * But only {@link com.opensource.ProgressView.MarkProgressBar.OnDeleteListener#onDelete(int, int)} callback<br/>
      * when delete with not confirm mode.
      */
     public static interface OnDeleteListener {

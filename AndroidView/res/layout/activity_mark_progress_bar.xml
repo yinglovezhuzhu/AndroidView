@@ -21,7 +21,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <com.opensource.view.MarkProgressBar
+    <com.opensource.view.ProgressView
         android:id="@+id/mpb_mark_progress"
         android:layout_width="match_parent"
         android:layout_height="30dp"
