@@ -30,6 +30,11 @@
         progress:progress="0"
         progress:max="100"
         progress:minMask="15"/>
+    <SurfaceView 
+        android:id="@+id/sv_preview"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"/>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

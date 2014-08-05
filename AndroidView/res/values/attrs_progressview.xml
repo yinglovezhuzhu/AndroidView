@@ -18,7 +18,7 @@
   -->
 
 <resources>
-    <declare-styleable name="DrawProgressBar">
+    <declare-styleable name="ProgressView">
         <attr name="backgroundColor" format="color" />
         <attr name="progressColor" format="color" />
         <attr name="progressBackgroundColor" format="color"/>
@@ -27,9 +27,13 @@
         <attr name="splitColor" format="color" />
         <attr name="splitWidth" format="dimension" />
         <attr name="showNumber" format="boolean" />
-        <attr name="max" format="integer"/>
-        <attr name="progress" format="integer"/>
-        <attr name="minMask" format="integer" />
+        <attr name="max" format="float"/>
+        <attr name="progress" format="float"/>
+        <attr name="minMask" format="float" />
         <attr name="minMaskColor" format="color" />
+        <attr name="showCursor" format="boolean" />
+        <attr name="cursorHightlightColor" format="color" />
+        <attr name="cursorDarkColor" format="color" />
+        <attr name="cursorWidth" format="dimension" /> />
     </declare-styleable>
 </resources>

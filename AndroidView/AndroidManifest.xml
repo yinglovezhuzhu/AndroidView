@@ -41,7 +41,7 @@
         </activity>
         <activity android:name=".test.CircleProgressBarActivity" />
         <activity
-            android:name=".test.MarkProgressBarActivity"
+            android:name=".test.ProgressViewActivity"
             android:label="@string/title_activity_mark_progress_bar" >
         </activity>
     </application>

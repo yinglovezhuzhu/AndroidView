@@ -44,8 +44,8 @@ public class CircleProgressBar extends View {
 //	private int mMaxWidth;
 //	private int mMaxHeight;
 	
-	private int mMaxProgress = 100;
-	private int mProgress = 0;
+	private float mMaxProgress = 100f;
+	private float mProgress = 0f;
 	private int mProgressWidth = 0;
 	private int mTextHeight = 0;
 	
@@ -91,16 +91,16 @@ public class CircleProgressBar extends View {
 		super(context, attrs, defStyle);
 		mUiThreadId = Thread.currentThread().getId();
 		initProgressBar();
-		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DrawProgressBar, defStyle, 0);
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ProgressView, defStyle, 0);
 
-		setBackgroundColor(a.getColor(R.styleable.DrawProgressBar_backgroundColor, mBackgroundColor));
-		setProgressBackgroundColor(a.getColor(R.styleable.DrawProgressBar_progressBackgroundColor, mProgressBackgroundColor));
-		setProgressColor(a.getColor(R.styleable.DrawProgressBar_progressColor, mProgressColor));
-		setCenterBackgroundColor(a.getColor(R.styleable.DrawProgressBar_centerBackgroundColor, mCenterBackgroundColor));
-		setProgressWidth(a.getDimensionPixelSize(R.styleable.DrawProgressBar_progressWidth, 0));
-		mShowNumber = a.getBoolean(R.styleable.DrawProgressBar_showNumber, false);
-		setMaxProgress(a.getInt(R.styleable.DrawProgressBar_max, mMaxProgress));
-		setProgress(a.getInt(R.styleable.DrawProgressBar_progress, mProgress));
+		setBackgroundColor(a.getColor(R.styleable.ProgressView_backgroundColor, mBackgroundColor));
+		setProgressBackgroundColor(a.getColor(R.styleable.ProgressView_progressBackgroundColor, mProgressBackgroundColor));
+		setProgressColor(a.getColor(R.styleable.ProgressView_progressColor, mProgressColor));
+		setCenterBackgroundColor(a.getColor(R.styleable.ProgressView_centerBackgroundColor, mCenterBackgroundColor));
+		setProgressWidth(a.getDimensionPixelSize(R.styleable.ProgressView_progressWidth, 0));
+		mShowNumber = a.getBoolean(R.styleable.ProgressView_showNumber, false);
+		setMaxProgress(a.getFloat(R.styleable.ProgressView_max, mMaxProgress));
+		setProgress(a.getFloat(R.styleable.ProgressView_progress, mProgress));
 		a.recycle();
 	}
  
@@ -138,7 +138,7 @@ public class CircleProgressBar extends View {
 	 * Get max progress
 	 * @return
 	 */
-	public int getMaxProgress() {
+	public float getMaxProgress() {
 		return mMaxProgress;
 	}
  
@@ -146,7 +146,7 @@ public class CircleProgressBar extends View {
 	 * Set max progress
 	 * @param maxProgress
 	 */
-	public void setMaxProgress(int maxProgress) {
+	public void setMaxProgress(float maxProgress) {
 		this.mMaxProgress = maxProgress;
 	}
  
@@ -154,7 +154,7 @@ public class CircleProgressBar extends View {
 	 * Set progress
 	 * @param progress
 	 */
-	public synchronized void setProgress(int progress) {
+	public synchronized void setProgress(float progress) {
 		if(progress < 0) {
 			progress = 0;
 		}
@@ -171,7 +171,7 @@ public class CircleProgressBar extends View {
      * Get current progress
      * @return
      */
-    public synchronized int getProgress() {
+    public synchronized float getProgress() {
         return mProgress;
     }
  

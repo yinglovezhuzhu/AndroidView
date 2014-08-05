@@ -81,8 +81,8 @@ public class CircleProgressBarActivity extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_UPDAGE_PROGRESS:
-                    int progress = mCpb.getProgress();
-                    int maxProgress = mCpb.getMaxProgress();
+                    float progress = mCpb.getProgress();
+                    float maxProgress = mCpb.getMaxProgress();
                     if(progress == maxProgress) {
                         progress = 0;
                         mCpb.setProgress(progress);

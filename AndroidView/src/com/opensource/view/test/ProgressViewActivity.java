@@ -29,7 +29,7 @@ import android.widget.Button;
 import com.opensource.view.ProgressView;
 import com.opensource.view.R;
 
-public class MarkProgressBarActivity extends Activity implements View.OnClickListener{
+public class ProgressViewActivity extends Activity implements View.OnClickListener{
 
     private static final int MSG_UPDATE_PROGRESS = 0x100;
 
@@ -46,7 +46,7 @@ public class MarkProgressBarActivity extends Activity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mark_progress_bar);
+        setContentView(R.layout.activity_progressview);
         mMpb = (ProgressView) findViewById(R.id.mpb_mark_progress);
         DisplayMetrics dm = getResources().getDisplayMetrics();
         mMpb.setMaxProgress(dm.widthPixels);
@@ -104,7 +104,7 @@ public class MarkProgressBarActivity extends Activity implements View.OnClickLis
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_UPDATE_PROGRESS:
-                    int progress = mMpb.getProgress() + 1;
+                    float progress = mMpb.getProgress() + 1;
                     if(progress < mMpb.getMaxProgress()) {
                         mMpb.setProgress(progress);
                         mHandler.sendEmptyMessageDelayed(MSG_UPDATE_PROGRESS, 20);
