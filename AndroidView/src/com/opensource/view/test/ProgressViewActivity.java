@@ -26,7 +26,9 @@ import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+
 import com.opensource.view.ProgressView;
+import com.opensource.view.ProgressView.OnDeleteListener;
 import com.opensource.view.R;
 
 public class ProgressViewActivity extends Activity implements View.OnClickListener{
@@ -65,6 +67,19 @@ public class ProgressViewActivity extends Activity implements View.OnClickListen
         mBtnReset = (Button) findViewById(R.id.btn_reset);
         mBtnReset.setOnClickListener(this);
         mBtnReset.setEnabled(false);
+        
+        mMpb.setOnDeleteListener(new OnDeleteListener() {
+			
+			@Override
+			public void onDelete(float lastProgress, float progress) {
+				mBtnReset.setEnabled(true);
+			}
+			
+			@Override
+			public void onConfirm(float lastProgress, float progress) {
+				mBtnReset.setEnabled(false);
+			}
+		});
     }
 
     @Override
@@ -84,7 +99,7 @@ public class ProgressViewActivity extends Activity implements View.OnClickListen
                 break;
             case R.id.btn_back:
                 mMpb.deleteBack(true);
-                break;
+                return;
             case R.id.btn_reset:
                 mMpb.setProgress(0);
                 mPausing = true;

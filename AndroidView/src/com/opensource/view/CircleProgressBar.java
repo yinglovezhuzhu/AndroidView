@@ -48,6 +48,7 @@ public class CircleProgressBar extends View {
 	private float mProgress = 0f;
 	private int mProgressWidth = 0;
 	private int mTextHeight = 0;
+	private int mStartAngle = 0;
 	
 	/** Background color */
 	private int mBackgroundColor = Color.TRANSPARENT;
@@ -91,16 +92,17 @@ public class CircleProgressBar extends View {
 		super(context, attrs, defStyle);
 		mUiThreadId = Thread.currentThread().getId();
 		initProgressBar();
-		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ProgressView, defStyle, 0);
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleProgressBar, defStyle, 0);
 
-		setBackgroundColor(a.getColor(R.styleable.ProgressView_backgroundColor, mBackgroundColor));
-		setProgressBackgroundColor(a.getColor(R.styleable.ProgressView_progressBackgroundColor, mProgressBackgroundColor));
-		setProgressColor(a.getColor(R.styleable.ProgressView_progressColor, mProgressColor));
-		setCenterBackgroundColor(a.getColor(R.styleable.ProgressView_centerBackgroundColor, mCenterBackgroundColor));
-		setProgressWidth(a.getDimensionPixelSize(R.styleable.ProgressView_progressWidth, 0));
-		mShowNumber = a.getBoolean(R.styleable.ProgressView_showNumber, false);
-		setMaxProgress(a.getFloat(R.styleable.ProgressView_max, mMaxProgress));
-		setProgress(a.getFloat(R.styleable.ProgressView_progress, mProgress));
+		setBackgroundColor(a.getColor(R.styleable.CircleProgressBar_backgroundColor, mBackgroundColor));
+		setProgressBackgroundColor(a.getColor(R.styleable.CircleProgressBar_progressBackgroundColor, mProgressBackgroundColor));
+		setProgressColor(a.getColor(R.styleable.CircleProgressBar_progressColor, mProgressColor));
+		setCenterBackgroundColor(a.getColor(R.styleable.CircleProgressBar_centerBackgroundColor, mCenterBackgroundColor));
+		setProgressWidth(a.getDimensionPixelSize(R.styleable.CircleProgressBar_progressWidth, 0));
+		mShowNumber = a.getBoolean(R.styleable.CircleProgressBar_showNumber, false);
+		setMaxProgress(a.getFloat(R.styleable.CircleProgressBar_max, mMaxProgress));
+		setProgress(a.getFloat(R.styleable.CircleProgressBar_progress, mProgress));
+		setStartAngle(a.getInt(R.styleable.CircleProgressBar_startAngle, mStartAngle));
 		a.recycle();
 	}
  
@@ -283,6 +285,11 @@ public class CircleProgressBar extends View {
 		this.mCenterBackgroundColor = color;
 		refreshProgress();
 	}
+	
+	public void setStartAngle(int angle) {
+		this.mStartAngle = angle;
+		refreshProgress();
+	}
 
 	private void initProgressBar() {
 		mPaint = new Paint();
@@ -313,11 +320,11 @@ public class CircleProgressBar extends View {
 		
 		//Draw progress background
 		mPaint.setColor(mProgressBackgroundColor);
-		canvas.drawArc(mOval, -90, 360, false, mPaint); // Draw progress background
+		canvas.drawArc(mOval, mStartAngle, 360, false, mPaint); // Draw progress background
 		
 		//Draw progress
 		mPaint.setColor(mProgressColor);
-		canvas.drawArc(mOval, -90, ((float) mProgress / mMaxProgress) * 360, false, mPaint); // 绘制进度圆弧，这里是蓝色
+		canvas.drawArc(mOval, mStartAngle, ((float) mProgress / mMaxProgress) * 360, false, mPaint); // 绘制进度圆弧，这里是蓝色
 	}
 	
 	/**
@@ -333,7 +340,7 @@ public class CircleProgressBar extends View {
 		mOval.bottom = height - mProgressWidth; // Bottom
 		mPaint.setColor(mCenterBackgroundColor);
 		mPaint.setStyle(Style.FILL);
-		canvas.drawArc(mOval, 0, 360, false, mPaint);
+		canvas.drawArc(mOval, mStartAngle, 360, false, mPaint);
 	}
 	
 	/**

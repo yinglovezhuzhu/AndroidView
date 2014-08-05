@@ -129,6 +129,7 @@ public class ProgressView extends View {
         setCursorHighColor(a.getColor(R.styleable.ProgressView_cursorHightlightColor, mCursorHighColor));
         setCursorDarkColor(a.getColor(R.styleable.ProgressView_cursorDarkColor, mCursorDarkColor));
         setCursorWidth(a.getDimensionPixelOffset(R.styleable.ProgressView_cursorWidth, mCusorWidth));
+        
         a.recycle();
         mHandler.sendEmptyMessageDelayed(MSG_UPDATE_CURSOR, mCursorBlinkTime);
     }

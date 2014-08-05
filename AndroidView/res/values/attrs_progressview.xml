@@ -18,22 +18,35 @@
   -->
 
 <resources>
+    <attr name="backgroundColor" format="color" />
+    <attr name="progressColor" format="color" />
+    <attr name="max" format="float"/>
+    <attr name="progress" format="float"/>
+    
     <declare-styleable name="ProgressView">
-        <attr name="backgroundColor" format="color" />
-        <attr name="progressColor" format="color" />
-        <attr name="progressBackgroundColor" format="color"/>
-        <attr name="progressWidth" format="dimension" />
-        <attr name="centerBackgroundColor" format="color" />
-        <attr name="splitColor" format="color" />
-        <attr name="splitWidth" format="dimension" />
-        <attr name="showNumber" format="boolean" />
-        <attr name="max" format="float"/>
-        <attr name="progress" format="float"/>
+        <attr name="backgroundColor"/>
+        <attr name="progressColor"/>
+        <attr name="max"/>
+        <attr name="progress"/>
         <attr name="minMask" format="float" />
         <attr name="minMaskColor" format="color" />
         <attr name="showCursor" format="boolean" />
+        <attr name="cursorWidth" format="dimension" />
         <attr name="cursorHightlightColor" format="color" />
         <attr name="cursorDarkColor" format="color" />
-        <attr name="cursorWidth" format="dimension" /> />
+        <attr name="splitColor" format="color" />
+        <attr name="splitWidth" format="dimension" />
+    </declare-styleable>
+    
+    <declare-styleable name="CircleProgressBar">
+        <attr name="backgroundColor"/>
+        <attr name="progressColor"/>
+        <attr name="max"/>
+        <attr name="progress"/>
+        <attr name="progressBackgroundColor" format="color"/>
+        <attr name="progressWidth" format="dimension" />
+        <attr name="centerBackgroundColor" format="color" />
+        <attr name="showNumber" format="boolean" />
+        <attr name="startAngle" format="integer" />
     </declare-styleable>
 </resources>
