@@ -26,14 +26,17 @@
 
     <com.opensource.view.CircleProgressBar
         android:id="@+id/cpb_progress"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerInParent="true"
-        circleprogress:backgroundColor="#00FFFFFF"
-        circleprogress:progressBackgroundColor="#FFAABBCC"
-        circleprogress:centerBackgroundColor="#00FF0000"
+        circleprogress:backgroundColor="#BB000000"
+        circleprogress:progressBackgroundColor="#FF808080"
+        circleprogress:centerBackgroundColor="#00FFFF00"
+        circleprogress:progressColor="#FFFFFFFF"
         circleprogress:max="100"
         circleprogress:progress="50"
         circleprogress:showNumber="true"
-        circleprogress:progressWidth="10dip"/>
+        circleprogress:progressWidth="10dip"
+        android:padding="10dip"
+        android:textColor="#FFFFFFFF"/>
 </RelativeLayout>

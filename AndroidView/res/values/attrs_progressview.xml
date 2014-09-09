@@ -48,5 +48,7 @@
         <attr name="centerBackgroundColor" format="color" />
         <attr name="showNumber" format="boolean" />
         <attr name="startAngle" format="integer" />
+        <attr name="android:padding" />
+        <attr name="android:textColor" />
     </declare-styleable>
 </resources>
