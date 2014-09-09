@@ -88,18 +88,20 @@ public class CircleProgressBar extends View {
 		mUiThreadId = Thread.currentThread().getId();
 		initProgressBar();
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleProgressBar, defStyle, 0);
-
-		setPadding(a.getDimensionPixelSize(R.styleable.CircleProgressBar_android_padding, 0));
-		setBackgroundColor(a.getColor(R.styleable.CircleProgressBar_backgroundColor, mBackgroundColor));
-		setProgressBackgroundColor(a.getColor(R.styleable.CircleProgressBar_progressBackgroundColor, mProgressBackgroundColor));
-		setProgressColor(a.getColor(R.styleable.CircleProgressBar_progressColor, mProgressColor));
-		setCenterBackgroundColor(a.getColor(R.styleable.CircleProgressBar_centerBackgroundColor, mCenterBackgroundColor));
-		setProgressWidth(a.getDimensionPixelSize(R.styleable.CircleProgressBar_progressWidth, 0));
+		
+		mPadding = a.getDimensionPixelSize(R.styleable.CircleProgressBar_android_padding, 0);
+		
+		mBackgroundColor = a.getColor(R.styleable.CircleProgressBar_backgroundColor, mBackgroundColor);
+		mProgressBackgroundColor = a.getColor(R.styleable.CircleProgressBar_progressBackgroundColor, mProgressBackgroundColor);
+		mProgressColor = a.getColor(R.styleable.CircleProgressBar_progressColor, mProgressColor);
+		mCenterBackgroundColor = a.getColor(R.styleable.CircleProgressBar_centerBackgroundColor, mCenterBackgroundColor);
+		mProgressWidth = a.getDimensionPixelSize(R.styleable.CircleProgressBar_progressWidth, 0);
 		mShowNumber = a.getBoolean(R.styleable.CircleProgressBar_showNumber, false);
-		setMaxProgress(a.getFloat(R.styleable.CircleProgressBar_max, mMaxProgress));
-		setProgress(a.getFloat(R.styleable.CircleProgressBar_progress, mProgress));
-		setStartAngle(a.getInt(R.styleable.CircleProgressBar_startAngle, mStartAngle));
-		setTextColor(a.getColor(R.styleable.CircleProgressBar_android_textColor, mTextColor));
+		mMaxProgress = a.getFloat(R.styleable.CircleProgressBar_max, mMaxProgress);
+		mProgress = a.getFloat(R.styleable.CircleProgressBar_progress, mProgress);
+		mStartAngle = a.getInt(R.styleable.CircleProgressBar_startAngle, mStartAngle);
+		mTextColor = a.getColor(R.styleable.CircleProgressBar_android_textColor, mTextColor);
+		refreshProgress();
 		a.recycle();
 	}
  
