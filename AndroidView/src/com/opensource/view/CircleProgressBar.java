@@ -109,7 +109,7 @@ public class CircleProgressBar extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		
-//		canvas.drawColor(mBackgroundColor); //Draw background color.
+		canvas.drawColor(mBackgroundColor); //Draw background color.
 		
 		int width = this.getWidth();
 		int height = this.getHeight();
